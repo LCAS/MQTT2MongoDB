@@ -19,7 +19,6 @@ class MQTT(object):
         self.MQTT_KEEPALIVE = config["KEEPALIVE"]
         self.MQTT_QOS = config["QOS"]
         self.MQTT_TOPICS = config["TOPICS"]
-        self.MQTT_DATETIME_FORMAT = "%d/%m/%Y %H:%M:%S"
 
     # noinspection PyUnusedLocal
     # @staticmethod
@@ -56,7 +55,7 @@ class MQTT(object):
             # "retained": msg.retain,
             "qos": msg.qos,
             "timestamp": int(datetime.now().timestamp()),
-            "datetime": datetime.now().strftime(self.MQTT_DATETIME_FORMAT),
+            "datetime": datetime.now().isoformat(),
         })
     
     def __checkJsonInPayload(self, payload:bytes):

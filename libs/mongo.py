@@ -3,20 +3,6 @@ from datetime import datetime
 from queue import Queue
 import pymongo, threading
 
-
-# MONGO_URI = "mongodb://127.0.0.1:27017"  # mongodb://user:pass@ip:port || mongodb://ip:port
-# MONGO_DB = "domotics"
-# MONGO_COLLECTION = "mqtt"
-# MONGO_TIMEOUT = 1  # Time in seconds
-# MONGO_DATETIME_FORMAT = "%d/%m/%Y %H:%M:%S"
-
-# MONGO_URI = os.getenv("MONGO_URI", MONGO_URI)
-# MONGO_DB = os.getenv("MONGO_DB", MONGO_DB)
-# MONGO_COLLECTION = os.getenv("MONGO_COLLECTION", MONGO_COLLECTION)
-# MONGO_TIMEOUT = float(os.getenv("MONGO_TIMEOUT", MONGO_TIMEOUT))
-# MONGO_DATETIME_FORMAT = os.getenv("MONGO_DATETIME_FORMAT", MONGO_DATETIME_FORMAT)
-
-
 class Mongo(object):
     def __init__(self, mongoConfig:dict, queue:Queue):
         self.__set_vars(mongoConfig)
@@ -76,7 +62,6 @@ class Mongo(object):
 
     def __store_thread_f(self, msg: dict):
         print("Storing")
-        now = datetime.now()
         try:
             result = self.collection.insert_one(msg)
             print("Saved in Mongo document ID", result.inserted_id)

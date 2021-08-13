@@ -24,8 +24,8 @@ if __name__ == "__main__":
     mqtt.run()
 
     th = []
-    th.append( threading.Thread(target=mongo.run,) )
-    th.append( threading.Thread(target=mqtt.run,) )
+    th.append(threading.Thread( target = mongo.run, ))
+    th.append(threading.Thread( target = mqtt.run, ))
 
     for t in th:
         t.daemon = True
@@ -35,5 +35,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         pass
 
-    # mqtt.stop()
-    # mongo.disconnect()
+    mqtt.stop()
+    mongo.disconnect()

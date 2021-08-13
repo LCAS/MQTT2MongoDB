@@ -5,21 +5,6 @@ from queue import Queue
 import paho.mqtt.client as mqtt
 import json
 
-# MQTT_BROKER = "127.0.0.1"
-# MQTT_PORT = 1883
-# MQTT_KEEPALIVE = 60
-# MQTT_QOS = 2
-# MQTT_TOPICS = ("#",)  # Array of topics to subscribe; '#' subscribe to ALL available topics
-
-# MQTT_BROKER = os.getenv("MQTT_BROKER", MQTT_BROKER)
-# MQTT_PORT = os.getenv("MQTT_PORT", MQTT_PORT)
-# MQTT_KEEPALIVE = os.getenv("MQTT_KEEPALIVE", MQTT_KEEPALIVE)
-# MQTT_QOS = os.getenv("MQTT_QOS", MQTT_QOS)
-# MQTT_TOPICS = os.getenv("MQTT_TOPICS", MQTT_TOPICS)  # As ENV, comma separated
-# if isinstance(MQTT_TOPICS, str):
-#     MQTT_TOPICS = [e.strip() for e in MQTT_TOPICS.split(",")]
-
-
 class MQTT(object):
     def __init__(self, mqttConfig:dict, queue:Queue):
         self.__set_vars(mqttConfig)
@@ -46,9 +31,9 @@ class MQTT(object):
 
     # noinspection PyUnusedLocal
     def on_message(self, client: mqtt.Client, userdata, msg: mqtt.MQTTMessage):
-        data = self.__createMsg(msg)
-        print(f"Rx MQTT | msg: {data}")
         if not msg.retain:
+            data = self.__createMsg(msg)
+            print(f"Rx MQTT | msg: {data}")
             self.queue.put(data)
 
     def run(self):

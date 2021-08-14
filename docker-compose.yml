@@ -1,33 +1,16 @@
 version: '3.4'
 
+x-logging:
+  &default-logging
+  options:
+    max-size: '10m'
+    max-file: '5'
+  driver: json-file
+
 services:
   mqtt2mongodb:
-    container_name: mqtt2mongodb
-    image: mqtt2mongodb
+    logging: *default-logging
+    image: umsaldanha/mqtt2mongodb
     restart: always
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    depends_on:
-      - mongodb
-      - mqtt
-
-  mqtt:
-    image: eclipse-mosquitto
-    restart: always
-    ports:
-      - 1883:1883
-      - 9001:9001
-    command: ["/usr/sbin/mosquitto", "-c", "/mosquitto-no-auth.conf"]
-
-  mongodb:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: username_db
-      MONGO_INITDB_ROOT_PASSWORD: password_db
     volumes:
-      - mongodb_volume:/data/db
-
-volumes:
-  mongodb_volume:
+      - ${MQTT2MONGODB_PATH}/appsettings.json:/app/appsettings.json

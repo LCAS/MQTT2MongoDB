@@ -1,21 +1,23 @@
 #!/bin/bash
 
 
-if [ $# -eq 0 ]
+if [ $# == 0 ]
   then
     echo "No arguments supplied, you need to pass one arg 'full' or 'only-mqtt2mongodb'"
     exit 1
 else
-    if [$1 -eq "full"]
-      then
-        DOCKER_COMPOSE_FILE="docker-compose.full.yml"
+  if [ "$1" == "full" ]
+  then
+    DOCKER_COMPOSE_FILE="docker-compose.full.yml"
+  else
+    if [ "$1" == "only-mqtt2mongodb" ]
+    then
+      DOCKER_COMPOSE_FILE="docker-compose.yml"
     fi
-    if [$1 -eq "only-mqtt2mongodb"]
-      then
-        DOCKER_COMPOSE_FILE="docker-compose.yml"
-    fi
+  fi
 fi
 
+MQTT2MONGODB_GITRAW=https://raw.githubusercontent.com/juniorsaldanha/MQTT2MongoDB/master
 
 echo "|_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻|"
 echo "|                            Now we will Download some file to your computer                                |"

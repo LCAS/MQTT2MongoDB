@@ -21,7 +21,7 @@ echo "|_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_
 echo "|                            Now we will Download some file to your computer                                |"
 echo "|_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻_⎻|"
 
-curl -sS https://raw.githubusercontent.com/juniorsaldanha/MQTT2MongoDB/master/.env -o .env_mqtt2mongodb
+curl -sS $MQTT2MONGODB_GITRAW/.env_mqtt2mongodb -o .env_mqtt2mongodb
 source .env_mqtt2mongodb
 
 mkdir $MQTT2MONGODB_PATH

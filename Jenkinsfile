@@ -1,10 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       steps {
         sh '''sleep 10
-docker ps]
+docker ps
 sleep 10
 docker info'''
       }

@@ -1,27 +1,12 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-
-  }
+  agent any
   stages {
-    stage('build') {
+    stage('') {
       steps {
-        sh 'docker info'
-        sleep(unit: 'MINUTES', time: 2)
-      }
-    }
-
-    stage('dockerhub login') {
-      steps {
-        sh 'docker login -u $DOCKERUSER -p $DOCKERPASS'
-      }
-    }
-
-    stage('push') {
-      steps {
-        sh 'docker push $DOCKERUSER/mqtt2mongodb:jenkins'
+        sh '''sleep 10
+docker ps]
+sleep 10
+docker info'''
       }
     }
 

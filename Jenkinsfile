@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('DOCKER LOGIN') {
       steps {
+        sh 'sudo apt-get install gnupg2 pass -yqq'
         sh 'docker login -u $DOCKERUSER -p $DOCKERPASS'
         sh 'docker images'
       }

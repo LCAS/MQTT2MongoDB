@@ -9,7 +9,7 @@ pipeline {
     stage('build') {
       steps {
         sh 'docker info'
-        sh 'docker build --tag umsaldanha/mqtt2mongodb:jenkins .'
+        sleep(unit: 'MINUTES', time: 2)
       }
     }
 

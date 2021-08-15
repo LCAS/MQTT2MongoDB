@@ -1,9 +1,11 @@
 pipeline {
   agent any
   stages {
-    stage('error') {
+    stage('DOCKER LOGIN') {
       steps {
-        sh 'docker login -u $DOCKERUSER -p $DOCKERPASS'
+        sh '''echo USERNAME: $DOCKERUSER
+echo PASSWORD: $DOCKERPASS
+echo $DOCKERPASS | docker login -u $DOCKERUSER --password-stdin'''
       }
     }
 

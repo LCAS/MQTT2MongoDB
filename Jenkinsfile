@@ -3,10 +3,7 @@ pipeline {
   stages {
     stage('error') {
       steps {
-        sh '''sleep 10
-docker ps
-sleep 10
-docker info'''
+        sh 'docker login -u $DOCKERUSER -p $DOCKERPASS'
       }
     }
 

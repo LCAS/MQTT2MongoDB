@@ -1,11 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('DOCKER LOGIN') {
+    stage('') {
       steps {
-        sh 'apt-get install gnupg2 pass -yqq'
-        sh 'docker login -u $DOCKERUSER -p $DOCKERPASS'
-        sh 'docker images'
+        sh '''docker build --tag umsaldanha/mqtt2mongodb:jenkins
+'''
       }
     }
 

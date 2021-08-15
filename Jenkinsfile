@@ -8,19 +8,19 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'docker build -t $dockerhubuser/mqtt2mongodb:jenkins .'
+        sh 'docker build --tag umsaldanha/mqtt2mongodb:jenkins .'
       }
     }
 
     stage('dockerhub login') {
       steps {
-        sh 'docker login -u $dockerhubuser -p $dockerhubpass'
+        sh 'docker login -u umsaldanha -p 253154Saldanha'
       }
     }
 
     stage('push') {
       steps {
-        sh 'docker push $dockerhubuser/mqtt2mongodb:jenkins'
+        sh 'docker push umsaldanha/mqtt2mongodb:jenkins'
       }
     }
 

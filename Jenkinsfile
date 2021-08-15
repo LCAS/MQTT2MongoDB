@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        sh '''docker build --tag umsaldanha/mqtt2mongodb:jenkins
+        sh '''docker build --tag umsaldanha/mqtt2mongodb:jenkins .
 '''
       }
     }

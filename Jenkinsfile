@@ -3,9 +3,8 @@ pipeline {
   stages {
     stage('DOCKER LOGIN') {
       steps {
-        sh '''echo USERNAME: $DOCKERUSER
-echo PASSWORD: $DOCKERPASS
-echo $DOCKERPASS | docker login -u $DOCKERUSER --password-stdin'''
+        sh 'docker login -u $DOCKERUSER -p $DOCKERPASS'
+        sh 'docker images'
       }
     }
 

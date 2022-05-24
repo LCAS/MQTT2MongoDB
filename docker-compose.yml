@@ -9,8 +9,11 @@ x-logging:
 
 services:
   mqtt2mongodb:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     logging: *default-logging
-    image: umsaldanha/mqtt2mongodb
+    image: lcas.lincoln.ac.uk/lcas/mqtt2mongodb
     restart: always
     volumes:
-      - ${MQTT2MONGODB_PATH}/appsettings.json:/app/appsettings.json
+      - ./appsettings.json:/app/appsettings.json:ro

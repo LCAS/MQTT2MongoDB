@@ -29,8 +29,11 @@ class Mongo(object):
         self.client = pymongo.MongoClient(
             host=self.MONGO_HOST,
             port=self.MONGO_PORT,
+            authSource=self.MONGO_DB,
             username=self.MONGO_USER,
-            password=self.MONGO_PASS
+            password=self.MONGO_PASS,
+            tls=True,
+            tlsAllowInvalidCertificates=True
         )
         self.database = self.client.get_database(self.MONGO_DB)
         self.collection = self.database.get_collection(self.MONGO_COLLECTION)

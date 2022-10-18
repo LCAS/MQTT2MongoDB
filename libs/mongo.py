@@ -2,6 +2,7 @@
 from datetime import datetime
 from queue import Queue
 import pymongo, threading
+from time import sleep
 
 class Mongo(object):
     def __init__(self, mongoConfig:dict, queue:Queue):
@@ -62,6 +63,8 @@ class Mongo(object):
     def __sync_queue(self,):
         if self.queue.qsize():
             self.save(self.queue.get())
+        else:
+            sleep(0.05)
 
     def __store_thread_f(self, msg: dict):
         print("Storing")
